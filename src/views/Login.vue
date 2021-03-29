@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import login from '@/api/login'
 export default {
     data() {
         return {
@@ -36,7 +37,14 @@ export default {
     },
     methods: {
         login() {
-            this.$router.push('/admin')
+            login.login().then(response => {
+                this.$message({
+                    type: 'success',
+                    message: response.data.message
+                })
+                console.log(response)
+                this.$router.push('/admin')
+            })
         }
     }
 }
