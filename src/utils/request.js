@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const service = axios.create({
-    baseURL: process.env.NODE_ENV == 'production' ? 'http://projectallocation-env.eba-mgyhdcw8.us-east-2.elasticbeanstalk.com/' : 'http://localhost:8001',
+    baseURL: process.env.NODE_ENV == 'production' ? 'https://projectallocation-env.eba-mgyhdcw8.us-east-2.elasticbeanstalk.com/' : 'http://localhost:8001',
     timeout: 5000
 })
 
