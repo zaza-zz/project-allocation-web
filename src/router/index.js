@@ -71,6 +71,7 @@ export const routes = [
     path: '/admin',
     name: 'Admin',
     component: Layout,
+    redirect: '/admin/list',
     children: [
       {
         path: 'list',
