@@ -64,6 +64,7 @@ export default {
         width: 520px;
         margin: 0 auto;
         padding: 200px 35px 0;
+        text-align: center;
     }
     .input-container {
         width: 80%;

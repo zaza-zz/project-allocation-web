@@ -88,6 +88,15 @@ export const routes = [
         meta: {
           title: 'Add admin',
         }
+      },
+      {
+        path: 'add/:id',
+        name: 'EditAdmin',
+        component: () => import('@/views/admin/add'),
+        meta: {
+          title: 'Edit admin'
+        },
+        hidden: true
       }
     ],
     meta: {

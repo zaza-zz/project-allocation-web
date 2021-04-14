@@ -1,9 +1,9 @@
 import request from '../utils/request'
 
 export default {
-    getAllUser() {
+    getAllAdmins() {
         return request({
-            url: '/user/getAllUser',
+            url: '/admin/getAllAdmins',
             method: 'get'
         })
     },

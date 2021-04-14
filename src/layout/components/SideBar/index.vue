@@ -11,18 +11,18 @@
             mode="vertical"
         >
             <div class="menu-wrapper" v-for="(firstRoute, firstIndex) in routes" :key="firstIndex">
-                <el-submenu v-if="firstRoute.children && firstRoute.children.length > 1" :index="firstIndex + ''">
+                <el-submenu v-if="firstRoute.children && firstRoute.children.length > 1" :index="firstRoute.path">
                     <template slot="title">
                         <i :class="firstRoute.meta.icon"></i>
                         <span slot="title">{{firstRoute.meta.title}}</span>
                     </template>
-                    <router-link :to="firstRoute.path + '/' + secondRoute.path"  :key="firstIndex + '-' + secondIndex" v-for="(secondRoute, secondIndex) in firstRoute.children">
-                        <el-menu-item :index="firstIndex + '-' + secondIndex">{{secondRoute.meta.title}}</el-menu-item>
+                    <router-link :to="firstRoute.path + '/' + secondRoute.path" :key="firstIndex + '-' + secondIndex"  v-for="(secondRoute, secondIndex) in firstRoute.children">
+                        <el-menu-item :index="firstRoute.path + '/' + secondRoute.path">{{secondRoute.meta.title}}</el-menu-item>
                     </router-link>
                 </el-submenu>
 
                 <router-link v-else :to="firstRoute.path + '/index'">
-                    <el-menu-item :index="firstIndex + ''" >
+                    <el-menu-item :index="firstRoute.path + '/index'" >
                         <i :class="firstRoute.meta.icon"></i>
                         <span slot="title">{{firstRoute.meta.title}}</span>
                     </el-menu-item>
@@ -57,10 +57,19 @@ export default {
             if (meta.activeMenu) {
                 return meta.activeMenu
             }
+            debugger
             return path
         },
         routes() {
             return routes.filter((route) => {
+                if (route.children) {
+                    let children = []
+                    children = route.children.filter ((child) => {
+                        return !child.hidden
+                    })
+                    route.children = children
+                }
+
                 return !route.hidden
             }) 
         }
