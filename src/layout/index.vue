@@ -6,10 +6,11 @@
                 <NavBar />
             </div>
             <div class="content-wrapper">
-                <router-view></router-view>
+                <transition name="fade">
+                    <router-view></router-view>
+                </transition>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -42,6 +43,13 @@ export default {
 }
 .right-panel.isCollapsed {
     margin-left: $hideSideBarWidth;
+}
+
+.fade-enter-active {
+  transition: all .8s ease;
+}
+.fade-enter, .fade-leave-to{
+  opacity: 0;
 }
 
 </style>
