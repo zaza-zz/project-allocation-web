@@ -116,6 +116,7 @@ export default {
     created() {
         let id = this.$route.params.id
         if (id) {
+            console.log(id)
             this.getAdmin(id)
         }
     },
